@@ -243,39 +243,88 @@ export const mySocials = [
 
 export const experiences = [
   {
-    title: "Software Developer",
-    job: "Security & Defense Projects",
-    date: "2021-2023",
+    title: "Software Engineer Intern",
+    job: "Persistent Systems",
+    date: "Jun 2025 – Present",
+    //shortDescription: "Developed agentic AI solutions using LLMs, LangChain, and Pinecone for autonomous agents and contextual decision-making.",
+    techStack: [
+      { name: "Python", path: "/assets/logos/react.svg" },
+      { name: "LangChain", path: "/assets/logos/react.svg" },
+      { name: "OpenAI", path: "/assets/logos/react.svg" },
+      { name: "LlamaIndex", path: "/assets/logos/react.svg" },
+      { name: "Pinecone", path: "/assets/logos/react.svg" },
+      { name: "Streamlit", path: "/assets/logos/react.svg" },
+      { name: "Docker", path: "/assets/logos/react.svg" },
+    ],
     contents: [
-      "Enhanced application security and developed new features, adhering to standards set by the Passive Defense Organization and National Cyberspace Center.",
-      "Designed and implemented intuitive map interfaces using MapsUI, enhancing user experience and enabling seamless interactive map integration.",
-      "Developed applications for industrial automation, leveraging C++ and the Fatek API for PLC communication.",
-      "Enhanced responsiveness and usability of applications using Windows Forms and WPF frameworks.",
-      "Executed XML to SVG conversions using X-DOM, ensuring dynamic and efficient data visualization.",
+      "Building an Agentic AI system with autonomous decision-making using modern LLM frameworks.",
+"Key tasks:",
+"‣ Developed agent-based workflows with LangChain, OpenAI, LlamaIndex.",
+"‣ Integrated Pinecone for memory retention.",
+"‣ Built Streamlit interface and deployed via Docker.",
+"‣ Followed agile, end-to-end dev cycle."
+
     ],
   },
   {
-    title: "Back-End Developer",
-    job: "Car Manufacture",
-    date: "2023-2024",
+    title: "Project Lead",
+    job: "Ministry Of Home Affairs (MHA), GOI",
+    date: "Jan 2025 – Present",
+    //shortDescription: "Led VR-based disaster training for NDRF, focusing on CBRN emergencies and immersive simulation design.",
+    techStack: [
+      { name: "Unity", path: "/assets/logos/react.svg" },
+      { name: "Unreal Engine", path: "/assets/logos/react.svg" },
+      { name: "React.js", path: "/assets/logos/react.svg" },
+      { name: "Django", path: "/assets/logos/react.svg" },
+      { name: "PostgreSQL", path: "/assets/logos/react.svg" },
+    ],
     contents: [
-      "Engineered systems for large-scale data ingestion and analysis, ensuring efficient data processing and storage.",
-      "Developed back-end systems enabling vehicle-to-cloud communication for telemetry, diagnostics, and remote control:",
-      "✅ Implemented secure APIs, following ISO 26262 automotive safety standards.",
-      "✅ Ensured data privacy for customers and partners through industry-compliant protocols.",
-      "✅ Delivered remote features like over-the-air updates, real-time tracking, and remote start capabilities.",
+      "Contributing to Project Sangrakshan, a VR-based training simulator for the National Disaster Response Force (NDRF), aimed at enhancing preparedness for CBRN (Chemical, Biological, Radiological, and Nuclear) emergencies.",
+      "‣ Worked on VR simulation design and interaction logic using Unity & 3D modeling tools.",
+      "‣ Focused on creating immersive and realistic emergency training environments."
     ],
   },
   {
-    title: "Freelance Developer",
-    job: "Self-Employed",
-    date: "2025-Present",
+    title: "Software Engineer Intern",
+    job: "Open Network For Digital Commerce (ONDC)",
+    date: "Dec 2024 – May 2025",
+    // shortDescription: "Built ONDC-compliant integrations and admin panels using React.js, Node.js, and Django for eCommerce.",
+    techStack: [
+      { name: "React.js", path: "/assets/logos/react.svg" },
+      { name: "Node.js", path: "/assets/logos/react.svg" },
+      { name: "Django", path: "/assets/logos/react.svg" },
+      { name: "WooCommerce", path: "/assets/logos/react.svg" },
+      { name: "MongoDB", path: "/assets/logos/react.svg" },
+    ],
     contents: [
-      "Created a personal portfolio using Three.js, React, Vite, and WebAPI to showcase technical expertise.",
-      "Continuously enhancing technical skills and expanding expertise in modern web development and back-end technologies.",
+      "‣ Designed and implemented a seamless integration adaptor for WooCommerce, compliant with ONDC Retail Protocol.",
+      "‣ Developed an API translation layer to support catalog synchronization, order management, and post-fulfillment workflows.",
+      "‣ Built a user-friendly admin panel for sellers with real-time tracking & management features using React.js & Node.js/Django.",
+      "‣ Ensured scalability, security, & ONDC compliance through robust testing & optimization.",
+      "‣ Published the solution as an open-source project, fostering widespread adoption of decentralized eCommerce."
+    ],
+  },
+  {
+    title: "Founding Member / XR Developer",
+    job: "XR-VERSE",
+    date: "Apr 2024 – Present",
+    //shortDescription: "Developed AR/VR business solutions and custom metaverse environments using Unity and Web3.",
+    techStack: [
+      { name: "Unity", path: "/assets/logos/react.svg" },
+      { name: "Web3.js", path: "/assets/logos/react.svg" },
+      { name: "Solidity", path: "/assets/logos/react.svg" },
+      { name: "Flutter", path: "/assets/logos/react.svg" },
+      { name: "Firebase", path: "/assets/logos/react.svg" },
+    ],
+    contents: [
+      "Developed immersive AR/VR solutions for businesses, including custom metaverse environments.",
+      "• Contributed to the company's vision of democratizing XR technology.",
+      "• Pitched AR/VR solutions to 50+ clients and secured partnerships.",
+      "• XR-VERSE Site: <a href='https://xr-verse.vercel.app/' target='_blank' rel='noopener noreferrer'>Demo</a>"
     ],
   },
 ];
+
 export const reviews = [
   {
     name: "Jack",
@@ -324,5 +373,56 @@ export const reviews = [
     username: "@eve",
     body: "So glad I found this. It has changed the game for me.",
     img: "https://robohash.org/eve",
+  },
+];
+
+export const achievements = [
+  {
+    title: "Global Best M-Gov Awards 2025 – Bronze for India",
+    description: "AccessWay (AR/AI accessibility platform for disabilities). Awarded by UAE Vice President at World Governments Summit, Dubai.",
+    img: "/assets/projects/accessories.jpg",
+    demo: "",
+  },
+  {
+    title: "Smart India Hackathon'23 – Winner",
+    description: "Sangrakhshan (VR-based CBRN disaster training for NDRF). Secured ₹27 lakhs in government funding; adopted by NDRF 8th Battalion.",
+    img: "/assets/projects/accessories.jpg",
+    demo: "",
+  },
+  {
+    title: "Hack4Purpose 2024 (IIT Delhi) – 1st Runner-Up",
+    description: "Heal-o-Verse: Virtual Appointment Metaverse (VR healthcare consultations).",
+    img: "/assets/projects/accessories.jpg",
+    demo: "",
+  },
+  {
+    title: "Scale +91 Hackathon: FINTECH FESTIVAL 2024 – Top 3",
+    description: "CRYPTXCHANGE (DeFi platform with metaverse education).",
+    img: "/assets/projects/accessories.jpg",
+    demo: "",
+  },
+  {
+    title: "HackBMU 2025 – 1st Prize",
+    description: "Pathshala (XR learning platform for inclusive education).",
+    img: "/assets/projects/accessories.jpg",
+    demo: "",
+  },
+  {
+    title: "FISHTANK Pitchathon – Runner-Up",
+    description: "XR-VERSE (AR/VR service solutions).",
+    img: "/assets/projects/accessories.jpg",
+    demo: "",
+  },
+  {
+    title: "SIH - IDE Bootcamp 2024 – Top Performing Idea",
+    description: "XR Labs (Metaverse for disaster management training). Startup registered with Wadhwani Foundation.",
+    img: "/assets/projects/accessories.jpg",
+    demo: "",
+  },
+  {
+    title: "Haryana Police Hackathon 2024 – Top 10",
+    description: "Nav Yuva Chetna (AR/VR anti-drug abuse platform).",
+    img: "/assets/projects/accessories.jpg",
+    demo: "",
   },
 ];
