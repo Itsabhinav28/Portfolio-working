@@ -1,8 +1,6 @@
-import { FlipWords } from "./FlipWords";
 import { motion } from "motion/react";
 
 const HeroText = () => {
-  const words = ["Secure", "Modern", "Scalable"];
   const variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
@@ -27,7 +25,7 @@ const HeroText = () => {
         </h1>
       </motion.div>
       
-      {/* Subtitle with flip words */}
+      {/* Subtitle */}
       <motion.div
         variants={variants}
         initial="hidden"
@@ -40,11 +38,9 @@ const HeroText = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-2 sm:space-y-0">
-          <FlipWords
-            words={words}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white"
-            duration={2500}
-          />
+          <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white">
+            Secure
+          </span>
           <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-300 font-light">
             Web Solutions
           </span>

@@ -46,13 +46,46 @@
       transform: translateY(calc(-100% - var(--gap)));
     }
   }
+
+  @keyframes beamMove {
+    0% {
+      transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100vw) rotate(45deg);
+    }
+  }
+
+  --animate-shine: shine var(--duration) infinite linear;
+ 
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
+  }
 }
+
 body {
   background: #030412;
   font-family: "Funnel Display", sans-serif;
   color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+/* CSS Variables for Interactive Hover Button */
+:root {
+  --background: #030412;
+  --foreground: #ffffff;
+  --primary: #33c2cc;
+  --primary-foreground: #ffffff;
+  --border: #ffffff20;
 }
 
 .c-space {
@@ -64,7 +97,7 @@ body {
 }
 
 .section-spacing {
-  @apply min-h-screen mt-20 md:mt-30;
+  @apply min-h-[80vh] mt-20 md:mt-30;
 }
 
 .text-heading {
@@ -135,4 +168,13 @@ body {
 
 .field-input-focus {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
+}
+
+/* Comet Card 3D Effects */
+.perspective-distant {
+  perspective: 1000px;
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
 }

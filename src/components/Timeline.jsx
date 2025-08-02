@@ -1,6 +1,7 @@
 "use client";
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import { ShineBorder } from "./ui/shine-border";
 
 export const Timeline = ({ data }) => {
   const ref = useRef(null);
@@ -81,13 +82,13 @@ export const Timeline = ({ data }) => {
   }, [data, flippedIdx]);
 
   return (
-    <div className="c-space section-spacing" ref={containerRef}>
+    <div className="c-space section-spacing relative" ref={containerRef} style={{ position: 'relative' }}>
       <h2 className="text-heading">My Work Experience</h2>
-      <div ref={ref} className="relative pb-20">
+      <div ref={ref} className="relative pb-20" style={{ position: 'relative' }}>
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col md:flex-row justify-start pt-10 md:pt-40 md:gap-10"
+            className="flex flex-col md:flex-row justify-start pt-6 md:pt-20 md:gap-10"
           >
             <div className="sticky z-40 flex flex-col items-center self-start max-w-xs md:flex-row top-40 lg:max-w-sm md:w-full">
               <div className="absolute flex items-center justify-center w-10 h-10 rounded-full -left-[15px] bg-midnight">
@@ -114,8 +115,6 @@ export const Timeline = ({ data }) => {
                   <div className="orbit-circle-logos">
                     {item.techStack.map((tech, i, arr) => {
                       const angle = (i * 360 / arr.length) - 90; // Start at top
-                      // Alternate orbit center: left for odd (0,2,..), right for even (1,3,..)
-                      const orbitOffset = (index % 2 === 0) ? -220 : 220;
                       return (
                         <img
                           key={tech.name}
@@ -123,7 +122,7 @@ export const Timeline = ({ data }) => {
                           alt={tech.name}
                           className="orbit-logo"
                           style={{
-                            left: `calc(50% + ${orbitOffset}px + ${160 * Math.cos(angle * Math.PI / 180)}px)` ,
+                            left: `calc(50% + ${160 * Math.cos(angle * Math.PI / 180)}px)`,
                             top: `calc(50% + ${160 * Math.sin(angle * Math.PI / 180)}px)`
                           }}
                           title={tech.name}
@@ -134,7 +133,7 @@ export const Timeline = ({ data }) => {
                 </div>
               )}
               <motion.div
-                className={`w-full h-full max-w-2xl ${flippedIdx === index ? 'z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0' : ''}`}
+                className="w-full h-full max-w-2xl"
                 animate={{ rotateY: flippedIdx === index ? 180 : 0 }}
                 transition={{ type: "spring", stiffness: 80, damping: 18 }}
                 style={{ transformStyle: "preserve-3d", minHeight: 220 }}
@@ -144,6 +143,11 @@ export const Timeline = ({ data }) => {
                   className={`absolute inset-0 flex flex-col justify-center gap-3 items-center text-center bg-gradient-to-br from-indigo/80 via-navy/80 to-storm/90 rounded-xl shadow-lg p-8 transition-all duration-300 ${flippedIdx === index ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}`}
                   style={{ backfaceVisibility: "hidden" }}
                 >
+                  <ShineBorder 
+                    borderWidth={2}
+                    duration={8}
+                    shineColor={["#9E00FF", "#2EB9DF", "#6344F5"]}
+                  />
                   <div className="flex flex-col gap-2 items-center text-center">
                     <h3 className="text-3xl md:text-4xl font-extrabold text-neutral-300 whitespace-nowrap truncate">{item.date}</h3>
                     <h3 className="text-2xl md:text-3xl font-bold text-neutral-400">{item.title}</h3>
@@ -154,13 +158,18 @@ export const Timeline = ({ data }) => {
                     )}
                   </div>
                   <div className="mt-6 text-center text-sm text-neutral-400 italic">Tap, click, or swipe up to see details</div>
-                </div>
+              </div>
                 {/* Back Side */}
                 <div
                   className={`absolute inset-0 flex flex-col justify-between glass-card border-l-4 border-royal bg-white/10 backdrop-blur-md rounded-xl p-6 shadow-lg transition-all duration-300 ${flippedIdx === index ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
                   style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                   ref={el => backRefs.current[index] = el}
                 >
+                  <ShineBorder 
+                    borderWidth={2}
+                    duration={8}
+                    shineColor={["#9E00FF", "#2EB9DF", "#6344F5"]}
+                  />
                   <div>
                     {item.contents.map((content, idx2, arr) => (
                       <motion.div
@@ -171,7 +180,7 @@ export const Timeline = ({ data }) => {
                         key={idx2}
                         dangerouslySetInnerHTML={{ __html: renderContent(content, idx2, arr) }}
                       />
-                    ))}
+              ))}
                   </div>
                 </div>
               </motion.div>
@@ -189,7 +198,7 @@ export const Timeline = ({ data }) => {
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-lavender/50 to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-500 via-lavender/50 to-transparent from-[0%] via-[10%] rounded-full animate-pulse"
           />
         </div>
       </div>

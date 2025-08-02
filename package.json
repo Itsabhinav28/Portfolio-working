@@ -14,15 +14,19 @@
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^10.0.0",
     "@react-three/fiber": "^9.0.4",
+    "@tabler/icons-react": "^3.34.1",
     "@tailwindcss/vite": "^4.0.7",
     "@types/three": "^0.173.0",
+    "clsx": "^2.1.1",
     "cobe": "^0.6.3",
+    "lucide-react": "^0.536.0",
     "maath": "^0.10.8",
-    "motion": "^12.4.5",
+    "motion": "^12.23.12",
     "react": "^19.0.0",
+    "react-3d-cloud": "^1.0.7",
     "react-dom": "^19.0.0",
     "react-responsive": "^10.0.0",
-    "tailwind-merge": "^3.0.1",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.0.7",
     "three": "^0.173.0"
   },
@@ -36,6 +40,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
-    "vite": "^6.1.0"
+    "vite": "^6.1.0",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }
