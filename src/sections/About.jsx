@@ -8,7 +8,7 @@ import { GlowingEffect } from "../components/GlowingEffect";
 import { BackgroundBeams } from "../components/ui/background-beams";
 import { CometCard } from "../components/ui/comet-card";
 import CareerAgentModal from "../components/CareerAgent/CareerAgentModal";
-import { CareerAgentButton } from "../components/ui/career-agent-button";
+import CareerAgentButton from "../components/ui/career-agent-button";
 const techStack = [
   // Languages
   { image: "/assets/logos/cplusplus.svg", name: "C++" },
