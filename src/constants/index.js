@@ -276,8 +276,13 @@ export const mySocials = [
   },
   {
     name: "Instagram",
-    href: "https://github.com/Itsabhinav28",
+    href: "https://www.instagram.com/its_abhinav05/",
     icon: "/assets/socials/instagram.svg",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/Itsabhinav28",
+    icon: "/assets/socials/githublogo.svg",
   },
 ];
 
