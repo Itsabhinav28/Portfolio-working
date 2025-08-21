@@ -1,7 +1,8 @@
 // REAL Gemini API Career Agent Service
 export class GeminiService {
   constructor() {
-    this.apiUrl = 'http://localhost:5000/api';
+    // Use the deployed Render backend URL
+    this.apiUrl = 'https://portfolio-bir3.onrender.com/api';
     this.chat = null;
   }
 
