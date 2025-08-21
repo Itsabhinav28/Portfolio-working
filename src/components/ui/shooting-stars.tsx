@@ -1,5 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { cn } from "../../lib/utils";
+import React, { useEffect, useState, useRef } from "react";
+
+interface ShootingStar {
+  id: number;
+  x: number;
+  y: number;
+  angle: number;
+  scale: number;
+  speed: number;
+  distance: number;
+}
 
 interface ShootingStarsProps {
   minSpeed?: number;
@@ -10,98 +21,129 @@ interface ShootingStarsProps {
   trailColor?: string;
   starWidth?: number;
   starHeight?: number;
+  className?: string;
 }
 
+const getRandomStartPoint = () => {
+  const side = Math.floor(Math.random() * 4);
+  const offset = Math.random() * window.innerWidth;
+
+  switch (side) {
+    case 0:
+      return { x: offset, y: 0, angle: 45 };
+    case 1:
+      return { x: window.innerWidth, y: offset, angle: 135 };
+    case 2:
+      return { x: offset, y: window.innerHeight, angle: 225 };
+    case 3:
+      return { x: 0, y: offset, angle: 315 };
+    default:
+      return { x: 0, y: 0, angle: 45 };
+  }
+};
+
 export const ShootingStars: React.FC<ShootingStarsProps> = ({
-  minSpeed = 15,
-  maxSpeed = 35,
-  minDelay = 2000,
-  maxDelay = 4000,
+  minSpeed = 10,
+  maxSpeed = 30,
+  minDelay = 1200,
+  maxDelay = 4200,
   starColor = "#9E00FF",
   trailColor = "#2EB9DF",
-  starWidth = 8,
+  starWidth = 10,
   starHeight = 1,
+  className,
 }) => {
-  const [shootingStars, setShootingStars] = useState<Array<{
-    id: number;
-    x: number;
-    y: number;
-    speed: number;
-    delay: number;
-    opacity: number;
-  }>>([]);
+  const [stars, setStars] = useState<ShootingStar[]>([]);
+  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    const createShootingStar = () => {
-      const id = Date.now() + Math.random();
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * (window.innerHeight * 0.3);
-      const speed = minSpeed + Math.random() * (maxSpeed - minSpeed);
-      const delay = minDelay + Math.random() * (maxDelay - minDelay);
-      
-      setShootingStars(prev => [...prev, { id, x, y, speed, delay, opacity: 1 }]);
-      
-      // Remove the shooting star after animation
-      setTimeout(() => {
-        setShootingStars(prev => prev.filter(star => star.id !== id));
-      }, 3000);
+    const createStar = () => {
+      const { x, y, angle } = getRandomStartPoint();
+      const newStar: ShootingStar = {
+        id: Date.now() + Math.random(),
+        x,
+        y,
+        angle,
+        scale: 1,
+        speed: Math.random() * (maxSpeed - minSpeed) + minSpeed,
+        distance: 0,
+      };
+      setStars(prev => [...prev, newStar]);
+
+      const randomDelay = Math.random() * (maxDelay - minDelay) + minDelay;
+      setTimeout(createStar, randomDelay);
     };
 
-    // Create initial shooting stars
-    const initialStars = Array.from({ length: 3 }, () => {
-      const id = Date.now() + Math.random();
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * (window.innerHeight * 0.3);
-      const speed = minSpeed + Math.random() * (maxSpeed - minSpeed);
-      const delay = Math.random() * 2000;
-      
-      return { id, x, y, speed, delay, opacity: 1 };
-    });
-    
-    setShootingStars(initialStars);
+    // Create initial stars
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => createStar(), i * 1000);
+    }
 
-    // Create new shooting stars periodically
-    const interval = setInterval(createShootingStar, 3000);
-
-    return () => clearInterval(interval);
+    return () => {};
   }, [minSpeed, maxSpeed, minDelay, maxDelay]);
 
+  useEffect(() => {
+    const moveStars = () => {
+      setStars(prevStars => 
+        prevStars
+          .map(star => {
+            const newX = star.x + star.speed * Math.cos((star.angle * Math.PI) / 180);
+            const newY = star.y + star.speed * Math.sin((star.angle * Math.PI) / 180);
+            const newDistance = star.distance + star.speed;
+            const newScale = 1 + newDistance / 100;
+            
+            if (
+              newX < -20 ||
+              newX > window.innerWidth + 20 ||
+              newY < -20 ||
+              newY > window.innerHeight + 20
+            ) {
+              return null;
+            }
+            
+            return {
+              ...star,
+              x: newX,
+              y: newY,
+              distance: newDistance,
+              scale: newScale,
+            };
+          })
+          .filter(Boolean) as ShootingStar[]
+      );
+    };
+
+    const animationFrame = requestAnimationFrame(moveStars);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [stars]);
+
   return (
-    <div className="absolute inset-0 pointer-events-none">
-      {shootingStars.map((star) => (
-        <div
+    <svg
+      ref={svgRef}
+      className={cn("w-full h-full absolute inset-0", className)}
+    >
+      {stars.map(star => (
+        <rect
           key={star.id}
-          className="absolute"
-          style={{
-            left: `${star.x}px`,
-            top: `${star.y}px`,
-            width: `${starWidth}px`,
-            height: `${starHeight}px`,
-            background: `linear-gradient(90deg, ${starColor} 0%, ${trailColor} 100%)`,
-            borderRadius: '50%',
-            boxShadow: `0 0 ${starWidth * 2}px ${starColor}`,
-            animation: `shootingStar ${star.speed}s linear infinite`,
-            animationDelay: `${star.delay}ms`,
-            opacity: star.opacity,
-          }}
+          x={star.x}
+          y={star.y}
+          width={starWidth * star.scale}
+          height={starHeight}
+          fill="url(#gradient)"
+          transform={`rotate(${star.angle}, ${
+            star.x + (starWidth * star.scale) / 2
+          }, ${star.y + starHeight / 2})`}
         />
       ))}
-      
-      <style>{`
-        @keyframes shootingStar {
-          0% {
-            transform: translateX(0) translateY(0) rotate(45deg);
-            opacity: 1;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateX(100vw) translateY(100vh) rotate(45deg);
-            opacity: 0;
-          }
-        }
-      `}</style>
-    </div>
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: trailColor, stopOpacity: 0 }} />
+          <stop
+            offset="100%"
+            style={{ stopColor: starColor, stopOpacity: 1 }}
+          />
+        </linearGradient>
+      </defs>
+    </svg>
   );
 }; 

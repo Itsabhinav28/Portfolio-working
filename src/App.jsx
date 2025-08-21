@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
@@ -7,8 +7,24 @@ import Experiences from "./sections/Experiences";
 import Achievements from "./sections/Testimonial";
 import Contact from "./sections/Contact";
 import Footer from './sections/Footer';
+import PortfolioLoader from "./components/portfolio-loader";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time - you can adjust this or remove it for instant loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000); // Show loader for 5 seconds for testing
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <PortfolioLoader />;
+  }
+
   return (
     <div className="w-full min-h-screen">
       <Navbar />

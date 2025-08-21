@@ -1,0 +1,11 @@
+# Flask Web Interface Requirements
+Flask==2.3.3
+Werkzeug==2.3.7
+flask-cors==4.0.0
+
+# Gemini AI Requirements
+google-generativeai
+python-dotenv
+
+# Additional utilities
+requests==2.31.0

@@ -17,11 +17,39 @@ export const MenuItem = ({
   item,
   children,
 }) => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  const handleMainItemClick = () => {
+    // Map main items to their corresponding sections
+    const sectionMap = {
+      'HOME': 'home',
+      'ABOUT': 'about',
+      'PROJECTS': 'projects',
+      'EXPERIENCE': 'experience',
+      'ACHIEVEMENTS': 'achievements',
+      'CONTACT': 'contact'
+    };
+    
+    const sectionId = sectionMap[item];
+    if (sectionId) {
+      scrollToSection(sectionId);
+    }
+  };
+
   return (
     <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-white hover:opacity-[0.9] text-sm font-medium"
+        onClick={handleMainItemClick}
       >
         {item}
       </motion.p>
@@ -73,17 +101,35 @@ export const ProductItem = ({
   href,
   src,
 }) => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (href && href.startsWith('#')) {
+      const sectionId = href.substring(1);
+      scrollToSection(sectionId);
+    }
+  };
+
   return (
-    <a href={href} className="flex space-x-2">
+    <a href={href} onClick={handleClick} className="flex space-x-2">
       <img
         src={src}
-        width={120}
-        height={60}
+        width={140}
+        height={80}
         alt={title}
-        className="shrink-0 rounded-md shadow-2xl"
+        className="shrink-0 rounded-md shadow-2xl object-cover h-20 w-28"
       />
       <div>
-        <h4 className="text-lg font-bold mb-1 text-white">
+        <h4 className="text-sm font-bold mb-1 text-white">
           {title}
         </h4>
         {description && (

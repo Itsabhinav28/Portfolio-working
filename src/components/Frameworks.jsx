@@ -6,18 +6,20 @@ export function Frameworks() {
     "blazor",
     "cplusplus",
     "csharp",
-    "css3",
+    "dart",
     "dotnet",
     "dotnetcore",
+    "expressjs",
     "git",
-    "html5",
     "javascript",
     "microsoft",
+    "nextjs",
     "react",
+    "reactnative",
     "sqlite",
     "tailwindcss",
+    "typescript",
     "vitejs",
-    "wordpress",
   ];
   return (
     <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">

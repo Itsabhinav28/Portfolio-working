@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Card from "../components/Card";
 import { Globe } from "../components/globe";
 import CopyEmailButton from "../components/CopyEmailButton";
@@ -7,23 +7,28 @@ import { IconCloud } from "../components/IconCloud";
 import { GlowingEffect } from "../components/GlowingEffect";
 import { BackgroundBeams } from "../components/ui/background-beams";
 import { CometCard } from "../components/ui/comet-card";
+import CareerAgentModal from "../components/CareerAgent/CareerAgentModal";
+import CareerAgentButton from "../components/ui/career-agent-button";
 const techStack = [
   // Languages
   { image: "/assets/logos/cplusplus.svg", name: "C++" },
   { image: "/assets/logos/python.svg", name: "Python" },
   { image: "/assets/logos/javascript.svg", name: "JavaScript" },
   { image: "/assets/logos/csharp.svg", name: "C#" },
+  { image: "/assets/logos/typescript.svg", name: "TypeScript" },
+  { image: "/assets/logos/dart.svg", name: "Dart" },
 
   // Frontend/Frameworks
   { image: "/assets/logos/react.svg", name: "React.js" },
-  { image: "/assets/logos/html5.svg", name: "HTML5" },
-  { image: "/assets/logos/css3.svg", name: "CSS3" },
+  { image: "/assets/logos/nextjs.svg", name: "Next.js" },
+  { image: "/assets/logos/reactnative.svg", name: "React Native" },
   { image: "/assets/logos/tailwindcss.svg", name: "Tailwind CSS" },
 
   // Backend/Frameworks
   { image: "/assets/logos/dotnet.svg", name: ".NET" },
   { image: "/assets/logos/dotnetcore.svg", name: ".NET Core" },
   { image: "/assets/logos/blazor.svg", name: "Blazor" },
+  { image: "/assets/logos/expressjs.svg", name: "Express.js" },
 
   // Cloud & Services
   { image: "/assets/logos/azure.svg", name: "Azure" },
@@ -37,10 +42,8 @@ const techStack = [
   // Tools
   { image: "/assets/logos/git.svg", name: "Git" },
   { image: "/assets/logos/github.svg", name: "GitHub" },
-  { image: "/assets/logos/visualstudiocode.svg", name: "VS Code" },
   { image: "/assets/logos/vitejs.svg", name: "Vite" },
   { image: "/assets/logos/threejs.svg", name: "Three.js" },
-  { image: "/assets/logos/wordpress.svg", name: "WordPress" },
 ];
 
 const icons = techStack.map((tech, index) => (
@@ -54,38 +57,51 @@ const icons = techStack.map((tech, index) => (
 
 const About = () => {
   const grid2Container = useRef();
+  const [isCareerAgentOpen, setIsCareerAgentOpen] = useState(false);
+
+  const openCareerAgent = () => {
+    setIsCareerAgentOpen(true);
+  };
+
+  const closeCareerAgent = () => {
+    setIsCareerAgentOpen(false);
+  };
+
   return (
     <section className="c-space section-spacing min-h-[60vh]" id="about">
       <h2 className="text-heading">About Me</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:auto-rows-[14rem] mt-12">
         {/* Grid 1 - Full Left Half */}
         <CometCard>
-          <div className="flex items-end grid-default-color grid-1 relative min-h-[6rem] md:min-h-[35rem]">
+          <CareerAgentButton
+            onClick={openCareerAgent}
+            className="flex items-end grid-default-color grid-1 relative min-h-[6rem] md:min-h-[35rem]"
+          >
             <img
               src="assets/coding-pov.png"
-              className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
+              className="absolute scale-[1.75] -right-[5rem] -top-[20rem] md:scale-[3] md:left-30 md:inset-y-[-35rem] lg:scale-[2.5] lg:-top-[30rem]"
             />
             <div className="z-10">
-              <p className="headtext text-white pointer-events-none opacity-60 select-none font-bold tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] transition-all duration-300">Hi, I'm Abhinav Mishra</p>
+              <p className="headtext text-white pointer-events-none opacity-60 select-none font-bold tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] transition-all duration-300">Hi, I'm Abhinav Mishra</p>
               <p className="subtext">
                 A passionate Computer Science Engineering student specializing in AI, with expertise in XR development, blockchain, and full-stack technologies. 
               </p>
             </div>
-            <div className="absolute inset-x-0 pointer-evets-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
-          </div>
+            {/* Removed the black rectangular gradient patch */}
+          </CareerAgentButton>
         </CometCard>
         
         {/* Right Half - Grid 2 and 3 stacked */}
         <div className="flex flex-col gap-4">
           {/* Grid 2 - Tech Stack (Top Right) */}
           <CometCard>
-            <div className="grid-default-color grid-2 min-h-[6rem] md:min-h-[17rem] relative overflow-hidden group hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
+            <div className="grid-default-color grid-2 min-h-[6rem] md:min-h-[17rem] relative overflow-hidden hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
               <BackgroundBeams />
               <div
                 ref={grid2Container}
                 className="flex items-center justify-center w-full h-full relative z-10"
               >
-                <div className="absolute top-8 left-4 text-5xl text-white pointer-events-none opacity-60 select-none font-bold tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] transition-all duration-300">
+                <div className="absolute top-8 left-4 text-5xl text-white pointer-events-none opacity-60 select-none font-bold tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] transition-all duration-300">
                   <p>TECH</p>
                   <p>STACK</p>
                 </div>
@@ -112,6 +128,12 @@ const About = () => {
           </CometCard>
         </div>
       </div>
+
+      {/* Career Agent Modal */}
+      <CareerAgentModal
+        isOpen={isCareerAgentOpen}
+        onClose={closeCareerAgent}
+      />
     </section>
   );
 };

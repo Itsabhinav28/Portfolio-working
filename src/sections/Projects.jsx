@@ -31,7 +31,10 @@ const Projects = () => {
       "Enviro-Bot": "🤖",
       "LogiGreen": "📦"
     };
-    return logos[projectName] || "🚀";
+    
+    // Extract project name from full title
+    const shortName = projectName.split(':')[0].trim();
+    return logos[shortName] || "🚀";
   };
 
   return (
@@ -69,7 +72,17 @@ const Projects = () => {
                     <div className="flex-shrink-0">
                       <div className="relative group">
                         <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 border-2 border-white/20 flex items-center justify-center text-3xl backdrop-blur-sm hover:scale-110 transition-all duration-300 hover:border-purple-400/40 overflow-hidden">
-                          {project.image ? (
+                          {project.logo ? (
+                            <img
+                              src={project.logo}
+                              alt={project.title}
+                              className="w-full h-full object-cover rounded-full"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                e.target.nextSibling.style.display = 'flex';
+                              }}
+                            />
+                          ) : project.image ? (
                             <img
                               src={project.image}
                               alt={project.title}
@@ -81,8 +94,8 @@ const Projects = () => {
                             />
                           ) : null}
                           <span 
-                            className={`text-2xl ${project.image ? 'hidden' : 'flex'}`}
-                            style={{ display: project.image ? 'none' : 'flex' }}
+                            className={`text-2xl ${(project.logo || project.image) ? 'hidden' : 'flex'}`}
+                            style={{ display: (project.logo || project.image) ? 'none' : 'flex' }}
                           >
                             {getProjectLogo(project.title)}
                           </span>

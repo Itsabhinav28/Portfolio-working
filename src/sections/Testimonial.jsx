@@ -12,7 +12,7 @@ const AchievementCard = ({ img, title, onClick, badge }) => {
       whileHover={{ scale: 1.06, rotateX: 6, boxShadow: "0 8px 32px 0 rgba(92,51,204,0.25)" }}
       whileTap={{ scale: 0.98 }}
       className={twMerge(
-        "relative h-72 w-96 cursor-pointer overflow-hidden rounded-xl border-2 bg-gradient-to-r bg-indigo to-storm hover:shadow-royal flex items-end border-transparent",
+        "relative h-85 w-[420px] cursor-pointer overflow-hidden rounded-xl border-2 bg-gradient-to-r bg-indigo to-storm hover:shadow-royal flex items-end border-transparent",
         "animated-border"
       )}
       onClick={onClick}
@@ -32,8 +32,8 @@ const AchievementCard = ({ img, title, onClick, badge }) => {
         alt="Achievement"
       />
       <div className="absolute bottom-0 left-0 w-full flex justify-center items-end z-10">
-        <div className="w-full bg-black/40 px-4 py-3 rounded-b-xl flex justify-center">
-          <figcaption className="text-lg font-bold drop-shadow-md text-center text-neutral-300">
+      <div className="w-full bg-black/40 px-4 py-3 rounded-b-xl flex justify-center">
+      <figcaption className="achievement-gradient-text text-lg font-bold drop-shadow-md text-center cursor-pointer">
             {title}
           </figcaption>
         </div>
@@ -54,7 +54,7 @@ const AchievementModal = ({ open, onClose, title, description, img, demo }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'linear-gradient(120deg, rgba(31,30,57,0.65) 0%, rgba(22,26,49,0.75) 100%)', backdropFilter: 'blur(8px)' }}>
-      <div className="relative bg-gradient-to-br from-indigo/90 via-navy/80 to-storm/90 rounded-2xl shadow-2xl max-w-2xl w-full p-0 overflow-hidden animate-scalein border-2 border-royal/60">
+      <div className="relative bg-gradient-to-br from-indigo/90 via-navy/80 to-storm/90 rounded-2xl shadow-2xl max-w-3xl w-full p-0 overflow-hidden animate-scalein border-2 border-royal/60">
         <motion.button
           className="absolute top-4 right-4 text-white text-3xl hover:text-fuchsia z-20 focus:outline-none"
           onClick={onClose}
@@ -66,10 +66,10 @@ const AchievementModal = ({ open, onClose, title, description, img, demo }) => {
         <img
           src={img}
           alt="Achievement Visual"
-          className="w-full h-64 object-cover object-center border-b-4 border-royal"
+          className="w-full h-90 object-cover object-center border-b-4 border-royal"
         />
         <div className="p-8 flex flex-col gap-4">
-          <h3 className="text-3xl font-extrabold text-neutral-300 text-center">{title}</h3>
+        <h3 className="achievement-gradient-text text-3xl font-extrabold text-center">{title}</h3>
           <p className="text-lg leading-relaxed text-neutral-500 text-center">{description}</p>
           {demo && demo.length > 0 && (
             <motion.a
@@ -135,7 +135,7 @@ export default function Achievements() {
   }, []);
 
   return (
-    <div className="items-start mt-25 md:mt-35 c-space">
+    <div id="achievements" className="items-start mt-25 md:mt-35 c-space">
       <h2 className="text-heading">My Achievements</h2>
       <div className="relative flex flex-col items-center justify-center w-full mt-12 overflow-hidden" ref={marqueeRef}>
         <Marquee pauseOnHover className="[--duration:20s]">
