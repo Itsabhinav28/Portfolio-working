@@ -89,8 +89,8 @@ const HeroText = () => {
           onClick={() => {
             // Download CV functionality
             const link = document.createElement('a');
-            link.href = '/ABHINAV MISHRA-RESUME.pdf';
-            link.download = 'ABHINAV MISHRA-RESUME.pdf';
+            link.href = '/Abhinav Mishra RESUME.pdf';
+            link.download = 'Abhinav Mishra RESUME.pdf';
             link.target = '_blank';
             document.body.appendChild(link);
             link.click();
