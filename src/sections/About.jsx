@@ -2,13 +2,13 @@ import { useRef, useState } from "react";
 import Card from "../components/Card";
 import { Globe } from "../components/globe";
 import CopyEmailButton from "../components/CopyEmailButton";
-import { Frameworks } from "../components/FrameWorks";
+import { Frameworks } from "../components/Frameworks";
 import { IconCloud } from "../components/IconCloud";
 import { GlowingEffect } from "../components/GlowingEffect";
 import { BackgroundBeams } from "../components/ui/background-beams";
 import { CometCard } from "../components/ui/comet-card";
 import CareerAgentModal from "../components/CareerAgent/CareerAgentModal";
-import CareerAgentButton from "../components/ui/career-agent-button";
+import { CareerAgentButton } from "../components/ui/career-agent-button";
 const techStack = [
   // Languages
   { image: "/assets/logos/cplusplus.svg", name: "C++" },
