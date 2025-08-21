@@ -63,15 +63,16 @@ const Contact = () => {
         refresh
       />
       {showAlert && <Alert type={alertType} text={alertMessage} />}
-      <div className="relative flex flex-col items-center justify-center max-w-md p-5 mx-auto rounded-2xl bg-primary overflow-hidden border-gradient z-10">
-        <div className="flex flex-col items-start w-full gap-5 mb-10">
+      <div className="relative flex flex-col items-center justify-center max-w-md p-5 mx-auto rounded-2xl bg-primary overflow-hidden contact-card-gradient">
+        {/* Gradient border is now behind content with z-index: -1 */}
+        <div className="relative z-10 flex flex-col items-start w-full gap-5 mb-10">
           <h2 className="text-heading">Let's Talk</h2>
           <p className="font-normal text-neutral-400">
             Whether you're looking to build a new website, improve your existing
             platform, or bring a unique project to life, I'm here to help
           </p>
         </div>
-        <form className="w-full relative z-20" onSubmit={handleSubmit}>
+        <form className="w-full relative z-10" onSubmit={handleSubmit}>
           <div className="mb-5">
             <label htmlFor="name" className="feild-label">
               Full Name

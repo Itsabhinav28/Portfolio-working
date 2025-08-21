@@ -77,16 +77,16 @@ const About = () => {
             onClick={openCareerAgent}
             className="flex items-end grid-default-color grid-1 relative min-h-[6rem] md:min-h-[35rem]"
           >
-            <img
-              src="assets/coding-pov.png"
+          <img
+            src="assets/coding-pov.png"
               className="absolute scale-[1.75] -right-[5rem] -top-[20rem] md:scale-[3] md:left-30 md:inset-y-[-35rem] lg:scale-[2.5] lg:-top-[30rem]"
-            />
-            <div className="z-10">
+          />
+          <div className="z-10">
               <p className="headtext text-white pointer-events-none opacity-60 select-none font-bold tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] transition-all duration-300">Hi, I'm Abhinav Mishra</p>
-              <p className="subtext">
+            <p className="subtext">
                 A passionate Computer Science Engineering student specializing in AI, with expertise in XR development, blockchain, and full-stack technologies. 
-              </p>
-            </div>
+            </p>
+          </div>
             {/* Removed the black rectangular gradient patch */}
           </CareerAgentButton>
         </CometCard>
@@ -97,8 +97,8 @@ const About = () => {
           <CometCard>
             <div className="grid-default-color grid-2 min-h-[6rem] md:min-h-[17rem] relative overflow-hidden hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
               <BackgroundBeams />
-              <div
-                ref={grid2Container}
+          <div
+            ref={grid2Container}
                 className="flex items-center justify-center w-full h-full relative z-10"
               >
                 <div className="absolute top-8 left-4 text-5xl text-white pointer-events-none opacity-60 select-none font-bold tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] transition-all duration-300">
@@ -108,23 +108,23 @@ const About = () => {
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1 -translate-y-35">
                   <IconCloud icons={icons} size={250} iconSize={40} />
                 </div>
-              </div>
-            </div>
+          </div>
+        </div>
           </CometCard>
           
           {/* Grid 3 - Time Zone (Bottom Right) */}
           <CometCard>
             <div className="grid-black-color grid-3 relative min-h-[6rem] md:min-h-[17rem]">
-              <div className="z-10 w-[50%]">
-                <p className="headtext">Time Zone</p>
-                <p className="subtext">
+          <div className="z-10 w-[50%]">
+            <p className="headtext">Time Zone</p>
+            <p className="subtext">
                   I'm based in India, and open to remote work worldwide
-                </p>
-              </div>
-              <figure className="absolute left-[30%] top-[10%]">
-                <Globe />
-              </figure>
-            </div>
+            </p>
+          </div>
+          <figure className="absolute left-[30%] top-[10%]">
+            <Globe />
+          </figure>
+        </div>
           </CometCard>
         </div>
       </div>

@@ -64,7 +64,7 @@ const Navbar = () => {
             <HoveredLink onClick={() => scrollToSection('experience')}>Internship</HoveredLink>
             <HoveredLink onClick={() => scrollToSection('experience')}>Clients</HoveredLink>
             <HoveredLink onClick={() => scrollToSection('experience')}>Venture</HoveredLink>
-          </div>
+            </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="ACHIEVEMENTS">
           <div className="text-sm grid grid-cols-2 gap-6 p-4">
@@ -92,7 +92,7 @@ const Navbar = () => {
               src="/assets/Achievements/fintech.jpg"
               description="Scale +91 Hackathon - Top 3 (5000+ teams)"
             />
-          </div>
+        </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="CONTACT">
           <div className="flex flex-col space-y-4 text-sm">
@@ -100,7 +100,7 @@ const Navbar = () => {
             <HoveredLink href="mailto:abhinav@example.com">Email</HoveredLink>
             <HoveredLink href="https://www.linkedin.com/in/mishra-abhinav05/" target="_blank" rel="noopener noreferrer">LinkedIn</HoveredLink>
             <HoveredLink href="https://github.com/Itsabhinav28" target="_blank" rel="noopener noreferrer">GitHub</HoveredLink>
-          </div>
+      </div>
         </MenuItem>
       </Menu>
     </div>

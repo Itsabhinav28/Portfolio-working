@@ -327,7 +327,7 @@ textarea.field-input:focus {
   content: '';
   position: absolute;
   inset: 0;
-  padding: 2px;
+  padding: 1px; /* Reduced from 2px to 1px for thinner border */
   background: linear-gradient(
     45deg,
     #7a57db,
@@ -346,6 +346,37 @@ textarea.field-input:focus {
   mask-composite: exclude;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
+  z-index: -1; /* Ensure it stays behind the content */
+}
+
+/* Contact Card Specific Gradient - More Focused */
+.contact-card-gradient {
+  position: relative;
+  background: var(--color-primary);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06); /* subtle fallback outline */
+}
+
+.contact-card-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* Increased from 0.5px to 1.5px for better visibility */
+  background: linear-gradient(
+    45deg,
+    #7a57db,
+    #5c33cc,
+    #33c2cc,
+    #57db96
+  );
+  background-size: 200% 200%;
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  z-index: 0; /* render above background, below content */
+  pointer-events: none; /* do not block interactions */
+  animation: gradient-shift 3s ease infinite;
 }
 
 /* Animated gradient text effect for achievements */
