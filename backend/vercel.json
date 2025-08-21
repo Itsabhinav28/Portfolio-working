@@ -1,14 +1,9 @@
 {
-  "version": 2,
-  "functions": {
-    "*.py": {
-      "runtime": "vercel-python@3.11"
-    }
-  },
-  "builds": [
-    {
-      "src": "*.py",
-      "use": "vercel-python@3.11"
-    }
-  ]
+	"functions": {
+		"api/**/*.py": {
+			"runtime": "python3.11",
+			"memory": 1024,
+			"maxDuration": 10
+		}
+	}
 }
